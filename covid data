@@ -1,0 +1,20 @@
+rm(list=ls()) # clears environment
+#library
+library(covid19.analytes)
+#data
+ag = covid19.data(case="aggregated")
+tsc=covid19.data(case="ts-confirmed")
+# summary
+ report.summary(Nentries = 10,
+                graphical.output = TRUE)
+ #totals per location
+tots.per.location(tsc,geo.loc = "US") 
+tots.per.location(tsc,geo.loc = "INDIA")
+tots.per.location(tsc,geo.loc = c("US","INDIA"))
+#growth rate
+growth.rate (tsc,geo.loc = "US")
+#world map
+live.map(tsc)
+#sIR model
+#s= healthy but susceptible to disease.,I=infected,R=recoverd
+generate.SIR.model(tsc,"switzerland",tot.population = 8540000)
